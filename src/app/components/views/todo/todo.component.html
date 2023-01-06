@@ -1,0 +1,11 @@
+<div>
+  <div>
+    <input #todoInput type="text" placeholder="请输入代办事项">
+  </div>
+
+  <ul>
+    <li *ngFor="let item of todos; trackBy: todoTrackBy">
+      {{ item.title }} <button (click)="deleteTodo(item.id)">删除</button>
+    </li>
+  </ul>
+</div>
