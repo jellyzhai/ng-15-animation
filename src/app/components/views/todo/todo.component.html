@@ -1,11 +1,18 @@
-<div>
+<div class="todo-box" @todoTitleAnimation>
+  <h1>Todo</h1>
   <div>
-    <input #todoInput type="text" placeholder="请输入代办事项">
+    <input #todoInput type="text" placeholder="请输入代办事项" />
   </div>
 
-  <ul>
-    <li *ngFor="let item of todos; trackBy: todoTrackBy">
-      {{ item.title }} <button (click)="deleteTodo(item.id)">删除</button>
+  <ul class="todo-ul">
+    <li
+      @slide
+      (@slide.start)="slideStart($event)"
+      (@slide.done)="slideDone($event)"
+      *ngFor="let item of todos; index as i; count as len; trackBy: todoTrackBy"
+    >
+      <span>{{ len - i }}、 {{ item.title }}</span>
+      <button (click)="deleteTodo(item.id)">删除</button>
     </li>
   </ul>
 </div>
